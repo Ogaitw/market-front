@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Funcionários</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Lista de Funcionários</h1>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Turno</th>
+          <th>Telefone</th>
+          <th>Ação</th> <!-- Coluna para o botão de exclusão -->
+        </tr>
+      </thead>
+      <tbody id="employeeList"></tbody>
+    </table>
+    <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+  </div>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="employeeList.js"></script>
+  
+</body>
+</html>
+
+
+
+
+
+
+

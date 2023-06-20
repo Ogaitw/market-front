@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adicionar Produto</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Adicionar Produto</h1>
+    <div id="alertMessage" class="alert alert-danger" role="alert" style="display: none;">
+      <strong>Aviso! </strong> Preencha todos os campos!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form id="addProductForm" class="mt-4">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço:</label>
+        <input type="text" class="form-control" id="preco" required>
+      </div>
+      <div class="form-group">
+        <label for="validade">Validade:</label>
+        <input type="date" class="form-control" id="validade" required>
+      </div>
+      <div class="form-group">
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" class="form-control" id="quantidade" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="addProduct()">Adicionar</button>
+      <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
+    </form>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="addProduct.js"></script>
+</body>
+</html>

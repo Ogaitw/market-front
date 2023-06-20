@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markerting</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Markerting</h1>
+    <button class="btn btn-primary mt-4" onclick="goToEmployeeList()">Listar Funcionários</button>
+    <button class="btn btn-primary mt-4" onclick="goToAddEmployee()">Adicionar Funcionário</button>
+    <button class="btn btn-primary mt-4" onclick="goToProductList()">Listar de Produtos</button>
+    <button class="btn btn-primary mt-4" onclick="goToAddProduct()">Adicionar Produto</button>
+  </div>
+
+  <script>
+    function goToEmployeeList() {
+      window.location.href = 'employeeList.html';
+    }
+
+    function goToAddEmployee() {
+      window.location.href = 'addEmployee.html';
+    }
+
+    function goToProductList() {
+      window.location.href = 'productList.html';
+    }
+
+    function goToAddProduct() {
+      window.location.href = 'addProduct.html';
+    }
+  </script>
+</body>
+</html>
