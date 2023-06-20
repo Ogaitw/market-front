@@ -37,6 +37,27 @@ function displayEmployees(employees) {
       });
   }
 
+  function openModal() {
+    var modal = document.getElementById('exampleModalCenter');
+    modal.classList.add('show');
+    modal.style.display = 'block';
+    modal.removeAttribute('aria-hidden');
+    modal.setAttribute('aria-modal', 'true');
+    var modalBackdrop = document.createElement('div');
+    modalBackdrop.classList.add('modal-backdrop', 'fade', 'show');
+    document.body.appendChild(modalBackdrop);
+  }
+
+  function closeModal() {
+    var modal = document.getElementById('exampleModalCenter');
+    modal.classList.remove('show');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
+    var modalBackdrop = document.querySelector('.modal-backdrop');
+    document.body.removeChild(modalBackdrop);
+  }
+
   function goToIndex() {
     window.location.href = 'index.html';
   }

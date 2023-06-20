@@ -4,3 +4,19 @@ body{
 h1{
     color: whitesmoke;
 }
+#delete {
+    align-items: right;
+}
+.modal-content {
+    background-color: whitesmoke;
+
+}
+.search-form {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .search-input {
+    width: 150px;
+  }
