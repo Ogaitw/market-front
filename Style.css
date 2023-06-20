@@ -11,9 +11,9 @@ h1{
     background-color: whitesmoke;
 
 }
-.search-form {
+.input-group{
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
     margin-bottom: 10px;
   }
 
