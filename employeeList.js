@@ -27,7 +27,7 @@ function displayEmployees(employees) {
       });
   }
   function deleteEmployee(id) {
-    axios.delete('http://localhost:8080/Employee/' + id)
+    axios.delete('http://localhost:8080/employee/' + id)
       .then(response => {
         alert('Funcionário excluído com sucesso!');
        

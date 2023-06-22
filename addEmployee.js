@@ -13,7 +13,7 @@ function addEmployee() {
       phone
     };
   
-    axios.post('http://localhost:8080/Employee', employeeData)
+    axios.post('http://localhost:8080/employee', employeeData)
       .then(response => {
         console.log('Funcionário adicionado com sucesso:', response.data);
         document.querySelector('#addEmployeeForm').reset();

@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   
   function getProducts() {
-    axios.get('http://localhost:8080/Product')
+    axios.get('http://localhost:8080/product')
       .then(response => {
         displayProducts(response.data);
       })
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     products.forEach(product => {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td>${product.id}</td>
+        <td>${product.Id}</td>
         <td>${product.name}</td>
         <td>${product.preco}</td>
         <td>${product.validade}</td>

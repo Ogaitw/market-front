@@ -16,7 +16,7 @@ function addProduct() {
       quantidade: quantidade
     };
 
-    axios.post('http://localhost:8080/Product', data)
+    axios.post('http://localhost:8080/product', data)
       .then(response => {
         alert('Produto cadastrado com sucesso!');
         resetForm();
@@ -45,3 +45,7 @@ $(document).ready(function() {
     $(this).parent().hide();
   });
 });
+
+function goToIndex() {
+  window.location.href = 'index.html';
+}
