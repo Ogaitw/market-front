@@ -11,14 +11,13 @@ function displayEmployees(employees) {
         <td>${employee.cpf}</td>
         <td>${employee.shift}</td>
         <td>${employee.phone}</td>
-      
-        `;
+      `;
       tbody.appendChild(row);
     });
   }
   
   function loadEmployees() {
-    axios.get('https://9cce-2804-14c-4183-4a46-b4e9-aa9e-5a9-ff34.ngrok-free.app/employee')
+    axios.get('https://mean-squids-dig.loca.lt/employee')
       .then(response => {
         const employees = response.data;
         displayEmployees(employees);
@@ -28,7 +27,7 @@ function displayEmployees(employees) {
       });
   }
   function deleteEmployee(id) {
-    axios.delete('https://9cce-2804-14c-4183-4a46-b4e9-aa9e-5a9-ff34.ngrok-free.app//employee/' + id)
+    axios.delete('https://mean-squids-dig.loca.lt/employee' + cpf)
       .then(response => {
         alert('Funcionário excluído com sucesso!');
        

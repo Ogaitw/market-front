@@ -13,9 +13,9 @@ function addEmployee() {
       phone
     };
   
-    axios.post('https://9cce-2804-14c-4183-4a46-b4e9-aa9e-5a9-ff34.ngrok-free.app/employee', employeeData)
+    axios.post('https://mean-squids-dig.loca.lt/employee', employeeData)
       .then(response => {
-        alert('Funcionário adicionado com sucesso:', response.data);
+        console.log('Funcionário adicionado com sucesso:', response.data);
         document.querySelector('#addEmployeeForm').reset();
       })
       .catch(error => {
