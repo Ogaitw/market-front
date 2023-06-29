@@ -16,7 +16,7 @@ function addProduct() {
       quantidade: quantidade
     };
 
-    axios.post('http://localhost:8080/product', data)
+    axios.post('https://9cce-2804-14c-4183-4a46-b4e9-aa9e-5a9-ff34.ngrok-free.app/product', data)
       .then(response => {
         alert('Produto cadastrado com sucesso!');
         resetForm();

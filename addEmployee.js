@@ -13,9 +13,9 @@ function addEmployee() {
       phone
     };
   
-    axios.post('http://localhost:8080/employee', employeeData)
+    axios.post('https://9cce-2804-14c-4183-4a46-b4e9-aa9e-5a9-ff34.ngrok-free.app/employee', employeeData)
       .then(response => {
-        console.log('Funcionário adicionado com sucesso:', response.data);
+        alert('Funcionário adicionado com sucesso:', response.data);
         document.querySelector('#addEmployeeForm').reset();
       })
       .catch(error => {
