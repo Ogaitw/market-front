@@ -16,7 +16,7 @@ function addProduct() {
       quantidade: quantidade
     };
 
-    axios.post('https://mean-squids-dig.loca.lt/product', data)
+    axios.post('http://localhost:8080/product', data)
       .then(response => {
         alert('Produto cadastrado com sucesso!');
         resetForm();
@@ -38,13 +38,13 @@ function closeAlert() {
   document.getElementById('alertMessage').style.display = 'none';
 }
 
-$(document).ready(function() {
-  $('.alert').alert();
+//$(document).ready(function() {
+// $('.alert').alert();
 
-  $('.alert .close').on('click', function() {
-    $(this).parent().hide();
-  });
-});
+//$('.alert .close').on('click', function() {
+//$(this).parent().hide();
+//});
+//});
 
 function goToIndex() {
   window.location.href = 'index.html';

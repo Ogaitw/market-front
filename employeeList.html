@@ -1,6 +1,4 @@
-<!DOCTYPE html>
 <html>
-
 <head>
   <title>Lista de Funcionários</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -12,8 +10,8 @@
     <div class="search-form d-inline">
       <div class="input-group justify-content-end">
         <div class="input-group-append">
-          <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="button-search" type="submit">Search</button>
+         <input class="form-control mr-sm-2 search-input" type="text" id="searchInput" placeholder="Pesquisar">
+'        <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchEmployee()">Pesquisar</button>
         </div>
       </div>
     </div>
@@ -38,31 +36,45 @@
       <tbody id="employeeList"></tbody>
     </table>
     <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
-    <button type="button" class="btn btn-danger" onclick="openModal()">Delete</button>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Demitir Funcionário</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+          <h5 class="modal-title" id="editEmployeeModalTitle">Editar Funcionário</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="cpfInput">Digite o CPF:</label>
-            <input type="number" class="form-control" id="cpfInput" placeholder="CPF">
+            <label for="editEmployeeId">ID:</label>
+            <input type="hidden" class="form-control" id="editEmployeeId">
           </div>
-          <button type="button" class="btn btn-primary" onclick="searchByCPF()">Pesquisar</button>
-          <div id="searchResults"></div>
+          <div class="form-group">
+            <label for="editEmployeeName">Nome:</label>
+            <input type="text" class="form-control" id="editEmployeeName">
+          </div>
+          <div class="form-group">
+            <label for="editEmployeeEmail">Email:</label>
+            <input type="email" class="form-control" id="editEmployeeEmail">
+          </div>
+          <div class="form-group">
+            <label for="editEmployeeCPF">CPF:</label>
+            <input type="text" class="form-control" id="editEmployeeCPF">
+          </div>
+          <div class="form-group">
+            <label for="editEmployeeShift">Turno:</label>
+            <input type="text" class="form-control" id="editEmployeeShift">
+          </div>
+          <div class="form-group">
+            <label for="editEmployeePhone">Telefone:</label>
+            <input type="text" class="form-control" id="editEmployeePhone">
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-          <button type="button" class="btn btn-danger">Excluir</button>
+          <button type="button" class="btn btn-primary" onclick="saveEmployeeChanges()">Salvar</button>
         </div>
       </div>
     </div>

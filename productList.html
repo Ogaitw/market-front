@@ -10,55 +10,68 @@
     <div class="search-form d-inline">
       <div class="input-group justify-content-end">
         <div class="input-group-append">
-          <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="button-search" type="submit">Search</button>
+         <input class="form-control mr-sm-2 search-input" type="text" id="searchInput" placeholder="Digite o nome do produto">
+'        <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchProducts()">Pesquisar</button>
         </div>
       </div>
     </div>
-    <div>
-    <h1>Lista de Produtos</h1>
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Validade</th>
-          <th>Quantidade</th>
-        </tr>
-      </thead>
-      <tbody id="productList"></tbody>
-    </table>
-    <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
-    <button type="button" class="btn btn-danger" onclick="openModal()">Delete</button>
   </div>
+<div>
+      <h1>Lista de Produtos</h1>
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Validade</th>
+            <th>Quantidade</th>
+            <th>Ação</th> 
+          </tr>
+        </thead>
+        <tbody id="productList"></tbody>
+      </table>
+      <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
+    </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Apagar Produto</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="cpfInput">Digite o Nome do Produto:</label>
-            <input type="number" class="form-control" id="cpfInput" placeholder="Nome">
+    <!-- Modal-->
+    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProductModalTitle">Editar Produto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <button type="button" class="btn btn-primary" onclick="searchByCPF()">Pesquisar</button>
-          <div id="searchResults"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-          <button type="button" class="btn btn-danger">Excluir</button>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editProductId"></label>
+              <input type="hidden" class="form-control" id="editProductId">
+            </div>
+            <div class="form-group">
+              <label for="editProductName" >Nome:</label>
+              <input type="text" class="form-control" id="editProductName">
+            </div>
+            <div class="form-group">
+              <label for="editProductPrice">Preço:</label>
+              <input type="text" class="form-control" id="editProductPrice">
+            </div>
+            <div class="form-group">
+              <label for="editProductExpiration">Validade:</label>
+              <input type="text" class="form-control" id="editProductExpiration">
+            </div>
+            <div class="form-group">
+              <label for="editProductQuantity">Quantidade:</label>
+              <input type="text" class="form-control" id="editProductQuantity">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="saveProductChanges()">Salvar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
