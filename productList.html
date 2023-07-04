@@ -1,80 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Lista de Produtos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
   <div class="container mt-5">
     <div class="search-form d-inline">
       <div class="input-group justify-content-end">
         <div class="input-group-append">
-         <input class="form-control mr-sm-2 search-input" type="text" id="searchInput" placeholder="Digite o nome do produto">
-'        <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchProducts()">Pesquisar</button>
+          <input class="form-control mr-sm-2 search-input" type="text" id="searchInput"
+            placeholder="Digite o nome do produto">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchProducts()">Pesquisar</button>
+        </div>
+      </div>
+    </div>
+  
+ <div>
+    <h1>Lista de Produtos</h1>
+ </div>
+
+  <div>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Validade</th>
+          <th>Quantidade</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="productList"></tbody>
+    </table>
+    <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
+  </div>
+
+  <!-- Modal-->
+  <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProductModalTitle">Editar Produto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editProductId"></label>
+            <input type="hidden" class="form-control" id="editProductId">
+          </div>
+          <div class="form-group">
+            <label for="editProductName">Nome:</label>
+            <input type="text" class="form-control" id="editProductName">
+          </div>
+          <div class="form-group">
+            <label for="editProductPrice">Preço:</label>
+            <input type="text" class="form-control" id="editProductPrice">
+          </div>
+          <div class="form-group">
+            <label for="editProductExpiration">Validade:</label>
+            <input type="date" class="form-control" id="editProductExpiration">
+          </div>
+          <div class="form-group">
+            <label for="editProductQuantity">Quantidade:</label>
+            <input type="text" class="form-control" id="editProductQuantity">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="saveProductChanges()">Salvar</button>
         </div>
       </div>
     </div>
   </div>
-<div>
-      <h1>Lista de Produtos</h1>
-      <table class="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Validade</th>
-            <th>Quantidade</th>
-            <th>Ação</th> 
-          </tr>
-        </thead>
-        <tbody id="productList"></tbody>
-      </table>
-      <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
-    </div>
-
-    <!-- Modal-->
-    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editProductModalTitle">Editar Produto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="editProductId"></label>
-              <input type="hidden" class="form-control" id="editProductId">
-            </div>
-            <div class="form-group">
-              <label for="editProductName" >Nome:</label>
-              <input type="text" class="form-control" id="editProductName">
-            </div>
-            <div class="form-group">
-              <label for="editProductPrice">Preço:</label>
-              <input type="text" class="form-control" id="editProductPrice">
-            </div>
-            <div class="form-group">
-              <label for="editProductExpiration">Validade:</label>
-              <input type="text" class="form-control" id="editProductExpiration">
-            </div>
-            <div class="form-group">
-              <label for="editProductQuantity">Quantidade:</label>
-              <input type="text" class="form-control" id="editProductQuantity">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="saveProductChanges()">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+</div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="productList.js"></script>
 </body>
+
 </html>

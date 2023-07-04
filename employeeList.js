@@ -12,13 +12,15 @@ function displayEmployees(employees) {
       <td>${employee.shift}</td>
       <td>${employee.phone}</td>
       <td>
-        <td><button class="btn btn-danger" onclick="deleteEmployee(${employee.Id})">Deletar</button>
+        <button class="btn btn-danger" onclick="deleteEmployee(${employee.Id})">Deletar</button>
         <button class="btn btn-primary" data-toggle="modal" data-target="#editProductModal" onclick="editEmployeeModal(${employee.Id})">Editar</button>
       </td>`
     ;
     tbody.appendChild(row);
   });
 }
+
+
 
 function loadEmployees() {
   axios.get('http://localhost:8080/employee')
@@ -55,7 +57,7 @@ function editEmployeeModal(id) {
     openModal();
   })
   .catch(error => {
-    console.error('Erro ao obter os dados do produto:', error);
+    console.error('Erro ao obter os dados do Employee:', error);
   });
 
   
@@ -68,6 +70,7 @@ function saveEmployeeChanges() {
   const employeeCpf = document.getElementById('editEmployeeCPF').value;
   const employeeShift = document.getElementById('editEmployeeShift').value;
   const employeePhone = document.getElementById('editEmployeePhone').value;
+  
 
   const updatedEmployee = {
     id: employeeId,
@@ -80,7 +83,6 @@ function saveEmployeeChanges() {
 
   axios.patch(`http://localhost:8080/employee/edit/${employeeId}`, updatedEmployee)
     .then(response => {
-      console.log('Alterações salvas com sucesso!');
       loadEmployees();
       closeModal();
     })
@@ -88,6 +90,7 @@ function saveEmployeeChanges() {
       console.error('Erro ao salvar as alterações:', error);
     });
 }
+
 
 function searchEmployee() {
   const searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -131,4 +134,6 @@ function goToIndex() {
   window.location.href = 'index.html';
 }
 
-document.addEventListener('DOMContentLoaded', loadEmployees);
+window.addEventListener('DOMContentLoaded', () => {
+  loadEmployees();
+});

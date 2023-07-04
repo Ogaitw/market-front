@@ -1,18 +1,6 @@
-
-function getProducts() {
-  axios.get('http://localhost:8080/product')
-    .then(response => {
-      const products = response.data;
-      displayProducts(products);
-    })
-    .catch(error => {
-      console.error('Erro ao obter os produtos:', error);
-    });
-}
-
 function displayProducts(products) {
-  const productList = document.querySelector('#productList');
-  productList.innerHTML = '';
+  const tbody = document.querySelector('#productList');
+  tbody.innerHTML = '';
 
   products.forEach(product => {
     const row = document.createElement('tr');
@@ -30,11 +18,25 @@ function displayProducts(products) {
     productList.appendChild(row);
   });
 }
+
+function loadProduct() {
+  axios.get('http://localhost:8080/product')
+    .then(response => {
+      const products = response.data;
+      displayProducts(products);
+    })
+    .catch(error => {
+      console.error('Erro ao obter os produtos:', error);
+    });
+}
+
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const formattedDate = date.toLocaleDateString();
   return formattedDate;
 }
+
 function deleteProduct(id) {
   axios.delete(`http://localhost:8080/product/id/${id}`)
     .then(response => {
@@ -52,7 +54,7 @@ function editProduct(id) {
       document.getElementById('editProductId').value = product.id;
       document.getElementById('editProductName').value = product.name;
       document.getElementById('editProductPrice').value = product.preco;
-      document.getElementById('editProductExpiration').value = product.validade;
+      document.getElementById('editProductExpiration').value = formatDate(product.validade);
       document.getElementById('editProductQuantity').value = product.quantidade;
 
       openModal();
@@ -65,23 +67,26 @@ function editProduct(id) {
 
 
 
-
 function saveProductChanges() {
   const productId = document.getElementById('editProductId').value;
   const productName = document.getElementById('editProductName').value;
   const productPrice = document.getElementById('editProductPrice').value;
   const productExpiration = document.getElementById('editProductExpiration').value;
   const productQuantity = document.getElementById('editProductQuantity').value;
+  const parts = productExpiration.split('/');
+  const formattedExpiration = `${parts.join('-')}`;
 
-  axios.patch(`http://localhost:8080/product/edit/${productId}`,{
+
+const updatedEmployee ={
     id: productId,
     name: productName,
     preco: productPrice,
-    validade: productExpiration,
+    validade: formattedExpiration,
     quantidade: productQuantity
-  })
+};
+axios.patch(`http://localhost:8080/product/edit/${productId}`,updatedEmployee)
     .then(response => {
-      getProducts();
+      loadProduct();
       closeModal();
     })
     .catch(error => {
@@ -89,6 +94,21 @@ function saveProductChanges() {
     });
 }
 
+function searchProducts() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const productList = document.querySelector('#productList');
+  const rows = productList.querySelectorAll('tr');
+
+  rows.forEach(row => {
+    const productName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+    if (productName.includes(searchTerm)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
 
 function openModal() {
   var modal = document.getElementById('editProductModal');
@@ -111,22 +131,6 @@ function closeModal() {
   document.body.removeChild(modalBackdrop);
 }
 
-function searchProducts() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-  const productList = document.querySelector('#productList');
-  const rows = productList.querySelectorAll('tr');
-
-  rows.forEach(row => {
-    const productName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-
-    if (productName.includes(searchTerm)) {
-      row.style.display = '';
-    } else {
-      row.style.display = 'none';
-    }
-  });
-}
-
 
 
 function goToIndex() {
@@ -134,7 +138,6 @@ function goToIndex() {
 }
 
 
-
 window.addEventListener('DOMContentLoaded', () => {
-  getProducts();
+  loadProduct();
 });

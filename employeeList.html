@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <title>Lista de Funcionários</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -10,78 +11,76 @@
     <div class="search-form d-inline">
       <div class="input-group justify-content-end">
         <div class="input-group-append">
-         <input class="form-control mr-sm-2 search-input" type="text" id="searchInput" placeholder="Pesquisar">
-'        <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchEmployee()">Pesquisar</button>
+          <input class="form-control mr-sm-2 search-input" type="text" id="searchInput" placeholder="Pesquisar">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchEmployee()">Pesquisar</button>
         </div>
       </div>
     </div>
     <div>
-    <h1 class="d-inline ">Lista de Funcionários</h1>
-   
-    
-  </div> 
+      <h1 class="d-inline ">Lista de Funcionários</h1>
+    </div>
+    <div>
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+            <th>Turno</th>
+            <th>Telefone</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="employeeList"></tbody>
+      </table>
+      <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
+    </div>
 
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>CPF</th>
-          <th>Turno</th>
-          <th>Telefone</th>
-          <th>Ação</th> 
-        </tr>
-      </thead>
-      <tbody id="employeeList"></tbody>
-    </table>
-    <button type="button" class="btn btn-secondary" onclick="goToIndex()">Voltar</button>
-  </div>
-
-  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editEmployeeModalTitle">Editar Funcionário</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="editEmployeeId">ID:</label>
-            <input type="hidden" class="form-control" id="editEmployeeId">
+    <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editEmployeeModalTitle">Editar Funcionário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group">
-            <label for="editEmployeeName">Nome:</label>
-            <input type="text" class="form-control" id="editEmployeeName">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="editEmployeeId">
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeName">Nome:</label>
+              <input type="text" class="form-control" id="editEmployeeName">
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeEmail">Email:</label>
+              <input type="email" class="form-control" id="editEmployeeEmail">
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeCPF">CPF:</label>
+              <input type="text" class="form-control" id="editEmployeeCPF">
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeShift">Turno:</label>
+              <input type="text" class="form-control" id="editEmployeeShift">
+            </div>
+            <div class="form-group">
+              <label for="editEmployeePhone">Telefone:</label>
+              <input type="text" class="form-control" id="editEmployeePhone">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="editEmployeeEmail">Email:</label>
-            <input type="email" class="form-control" id="editEmployeeEmail">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="saveEmployeeChanges()">Salvar</button>
           </div>
-          <div class="form-group">
-            <label for="editEmployeeCPF">CPF:</label>
-            <input type="text" class="form-control" id="editEmployeeCPF">
-          </div>
-          <div class="form-group">
-            <label for="editEmployeeShift">Turno:</label>
-            <input type="text" class="form-control" id="editEmployeeShift">
-          </div>
-          <div class="form-group">
-            <label for="editEmployeePhone">Telefone:</label>
-            <input type="text" class="form-control" id="editEmployeePhone">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="saveEmployeeChanges()">Salvar</button>
         </div>
       </div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="employeeList.js"></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="employeeList.js"></script>
+ <div>
 </body>
 
 </html>
