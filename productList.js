@@ -33,7 +33,10 @@ function loadProduct() {
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const formattedDate = date.toLocaleDateString();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
   return formattedDate;
 }
 
@@ -86,8 +89,10 @@ const updatedEmployee ={
 };
 axios.patch(`http://localhost:8080/product/edit/${productId}`,updatedEmployee)
     .then(response => {
-      loadProduct();
       closeModal();
+      loadProduct();
+      reloadPagina()
+      
     })
     .catch(error => {
       console.error('Erro ao salvar as alterações do produto:', error);
@@ -110,6 +115,23 @@ function searchProducts() {
   });
 }
 
+function closeModal() {
+  var modal = document.getElementById('editProductModal');
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  modal.removeAttribute('aria-modal');
+  var modalBackdrop = document.querySelector('.modal-backdrop');
+  document.body.removeChild(modalBackdrop);
+  reloadPagina();
+}
+
+function addCloseModalEvent() {
+  var closeModalButton = document.querySelector('.close');
+  closeModalButton.addEventListener('click', closeModal);
+  
+}
+
 function openModal() {
   var modal = document.getElementById('editProductModal');
   modal.classList.add('show');
@@ -119,19 +141,14 @@ function openModal() {
   var modalBackdrop = document.createElement('div');
   modalBackdrop.classList.add('modal-backdrop', 'fade', 'show');
   document.body.appendChild(modalBackdrop);
+
+  addCloseModalEvent();
+   // Adiciona evento de fechar modal ao botão (x)
 }
 
-function closeModal() {
-  var modal = document.getElementById('editProductModal');
-  modal.classList.remove('show');
-  modal.style.display = 'none';
-  modal.setAttribute('aria-hidden', 'true');
-  modal.removeAttribute('aria-modal');
-  var modalBackdrop = document.querySelector('.modal-backdrop');
-  document.body.removeChild(modalBackdrop);
+function reloadPagina() {
+  location.reload();
 }
-
-
 
 function goToIndex() {
   window.location.href = 'index.html';
